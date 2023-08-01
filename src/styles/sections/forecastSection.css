@@ -1,0 +1,35 @@
+.forecast__section {
+    margin-top: 40px;
+}
+
+.forecast__title {
+    font-size: 18px;
+}
+
+.forecast__cards {
+    margin-top: 20px;
+    display: flex;
+    column-gap: 30px;
+}
+
+.forecast__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 90px;
+    row-gap: 10px;
+}
+
+.forecast__day {
+    color: #ccccd3;
+}
+
+.forecast__icon {
+    width: 150px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.forecast__temp {
+    font-size: 14px;
+}

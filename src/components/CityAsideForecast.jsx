@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function CityAsideForecast() {
     return (
-        <div>Aside</div>
+        <section className='aside__section'>Aside</section>
     )
 }

@@ -1,18 +1,16 @@
 import React, { useState } from 'react'
 import { useGlobalContext } from '../context/AppContext';
+import { formatDate } from '../utils/utils';
 
 export default function CityCard(props) {
     const { city, active, setActive } = props;
     const { setCity, setTripStartDate, setTripEndDate } = useGlobalContext();
-    function format(str) {
-        const formatted = str.split('.').reverse().join('-');
-        return formatted
-    }
+
     function chooseTrip() {
         setActive(city.name);
         setCity(city.name);
-        setTripStartDate(format(city.startDate));
-        setTripEndDate(format(city.endDate))
+        setTripStartDate(formatDate(city.startDate));
+        setTripEndDate(formatDate(city.endDate))
     }
 
     return (

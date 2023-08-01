@@ -1,22 +1,37 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useGlobalContext } from '../context/AppContext';
+import TripForecastCard from './TripForecastCard';
 
 export default function TripForecastSection() {
     const { city, tripStartDate, tripEndDate } = useGlobalContext();
+    const [tripForecast, setTripForecast] = useState(null);
+    const [loading, setLoading] = useState(false);
+
+    const notRenderCondition = !city || !tripStartDate || !tripEndDate;
+
     async function fetchTripWeather() {
         const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}/${tripStartDate}/${tripEndDate}?unitGroup=metric&include=days&key=${process.env.REACT_APP_WEATHER_API}&contentType=json`;
-        const result = await fetch(url);
-        return result;
+        const result = await fetch(url).then(res => res.json());
+        setTripForecast(result);
     }
+
     useEffect(() => {
-        if (city && tripStartDate && tripEndDate) {
-            console.log("t")
-        }
+        if (notRenderCondition) return;
+        setLoading(true);
+        fetchTripWeather();
+        setLoading(false);
     }, [city, tripEndDate, tripStartDate])
-    if (!city || !tripStartDate || !tripEndDate) return;
+
+
+    if (notRenderCondition) return;
+
     return (
-        <div>
-            nice
-        </div>
+        <section className='forecast__section' onClick={() => console.log(tripForecast)}>
+            <span className='forecast__title'>Week</span>
+            <div className='forecast__cards'>
+                {tripForecast && tripForecast.days.map(day => <TripForecastCard key={day.datetimeEpoch} info={day} />)}
+
+            </div>
+        </section>
     )
 }

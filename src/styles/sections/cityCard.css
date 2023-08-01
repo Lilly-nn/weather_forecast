@@ -1,6 +1,6 @@
 .city-card {
     max-width: 200px;
-    height: 280px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     row-gap: 20px;
@@ -21,7 +21,7 @@
 }
 
 .city-card__img {
-    height: 180px;
+    height: 150px;
     object-fit: cover;
 }
 
@@ -31,4 +31,6 @@
 
 .city-card__date {
     color: #a9a9ac;
+    white-space: nowrap;
+    font-size: 14px;
 }

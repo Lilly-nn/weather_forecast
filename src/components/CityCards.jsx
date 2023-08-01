@@ -1,24 +1,11 @@
 import React, { useState } from 'react'
 import CityCard from './CityCard'
+import { useGlobalContext } from '../context/AppContext';
 
 export default function CityCards() {
+    const { citiesInfo } = useGlobalContext();
     const [active, setActive] = useState('');
-    const [cityCards, setCityCards] = useState([{
-        id: "_589038940387",
-        name: "Berlin",
-        image: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/berlin-c96f97c4ba.jpg",
-        startDate: "14.07.23",
-        endDate: "21.07.23",
-    }, {
-        id: "_589038940388",
-        name: "Paris",
-        image: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/paris_web-0a3c7314a5.jpg",
-        startDate: "16.07.23",
-        endDate: "19.07.23",
-    }
-    ])
-    // const { today, nextWeek } = getFormattedDays();
-
+    const [cityCards, setCityCards] = useState(citiesInfo);
 
     return (
         <section className='city-cards__section'>

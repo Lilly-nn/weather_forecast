@@ -3,6 +3,8 @@
 @import "./sections/input.css";
 @import "./sections/cityCardsSection.css";
 @import "./sections/cityCard.css";
+@import "./sections/forecastSection.css";
+@import "./sections/aside.css";
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -19,7 +21,8 @@ code {
 
 .app {
   font-family: 'Roboto', sans-serif;
-  padding: 2% 5%;
+  display: flex;
+  column-gap: 50px;
 }
 
 .app__title {
@@ -28,4 +31,10 @@ code {
 
 .app__title--bold {
   font-weight: 700;
+}
+
+.weather__section {
+  padding: 2% 5%;
+  overflow: hidden;
+  width: 70%;
 }
