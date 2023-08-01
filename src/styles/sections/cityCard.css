@@ -1,0 +1,34 @@
+.city-card {
+    max-width: 200px;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    border: 1px solid #e9e8ee;
+    flex: 33.333%;
+    cursor: pointer;
+}
+
+.city-card.active {
+    border: 2px solid #a0a0ee;
+}
+
+.city-card__info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 0 20px;
+}
+
+.city-card__img {
+    height: 180px;
+    object-fit: cover;
+}
+
+.city-card__title {
+    font-weight: 500;
+}
+
+.city-card__date {
+    color: #a9a9ac;
+}

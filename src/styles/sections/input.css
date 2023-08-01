@@ -1,0 +1,41 @@
+.input__container {
+    margin-top: 40px;
+    background: #f5f4f8;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    padding: 15px;
+    border: 2px solid transparent;
+}
+
+.input__container:focus-within {
+    border: 2px solid darkgray;
+}
+
+.input__container:focus {
+    outline: none;
+
+}
+
+.input__container .icon {
+    margin-left: 5px;
+}
+
+.input__container .input {
+    background: none;
+    margin-left: 10px;
+    color: #000;
+    font-family: 'Roboto', sans-serif;
+    min-width: 250px;
+}
+
+.input__container .input::placeholder {
+    color: #000;
+    font-weight: 400;
+}
+
+.input__container .input:focus {
+    outline: none;
+
+}
