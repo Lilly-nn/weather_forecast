@@ -17,7 +17,7 @@ export default function CityAsideForecast() {
 
     function getWeatherInfo() {
         const info = cityInfo.days[0];
-        console.log(info)
+        console.log(info);
         setWeather({
             day: getDayOfWeek(info.datetime),
             icon: getIcon(info.icon),

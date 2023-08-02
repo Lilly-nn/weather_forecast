@@ -7,14 +7,14 @@ export default function CityCard(props) {
     const { setCity, setTripStartDate, setTripEndDate } = useGlobalContext();
 
     function chooseTrip() {
-        setActive(city.name);
+        setActive(city.id);
         setCity(city.name);
         setTripStartDate(formatDate(city.startDate));
         setTripEndDate(formatDate(city.endDate))
     }
 
     return (
-        <div className={`city-card ${(active === city.name) ? "active" : ""}`} onClick={chooseTrip}>
+        <div className={`city-card ${(active === city.id) ? "active" : ""}`} onClick={chooseTrip}>
             <img className='city-card__img' src={city.image} alt={city.name + "image"} />
             <div className='city-card__info'>
                 <span className='city-card__title'>{city.name}</span>

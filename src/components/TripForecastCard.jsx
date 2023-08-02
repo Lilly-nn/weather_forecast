@@ -8,7 +8,7 @@ export default function TripForecastCard({ info }) {
     return (
         <div className='forecast__card'>
             <span className='forecast__day'>{dayOfWeek}</span>
-            <img className='forecast__icon' src={iconImg} />
+            <img className='forecast__icon' src={iconImg} alt="forecast icon" />
             <span className='forecast__temp'>{`${tempmax}`}&deg;/{`${tempmin}`}&deg;</span>
         </div>
     )

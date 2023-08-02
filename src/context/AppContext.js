@@ -12,27 +12,28 @@ export default function AppContext({ children }) {
             id: "_589038940388",
             name: "Paris",
             image: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/paris_web-0a3c7314a5.jpg",
-            startDate: "14.08.2023",
+            startDate: "16.08.2023",
             endDate: "20.08.2023",
         },
         {
             id: "_589038940387",
             name: "Barcelona",
             image: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/barcelona_web-8ce54f1421.jpg",
-            startDate: "16.08.2023",
+            startDate: "13.08.2023",
             endDate: "21.08.2023",
         },
         {
             id: "_589038940389",
-            name: "Amsterdam",
+            name: "Paris",
             image: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/amsterdam_web-1cd4b2bf75.jpg",
-            startDate: "17.08.2023",
+            startDate: "11.08.2023",
             endDate: "28.08.2023",
         },
 
     ])
+    const [filtered, setFiltered] = useState([]);
 
-    const props = { city, setCity, citiesInfo, setCitiesInfo, tripStartDate, tripEndDate, setTripStartDate, setTripEndDate };
+    const props = { city, setCity, citiesInfo, setCitiesInfo, tripStartDate, tripEndDate, setTripStartDate, setTripEndDate, filtered, setFiltered };
 
     return (
         <GlobalContext.Provider value={{ ...props }}>
