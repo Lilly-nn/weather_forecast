@@ -29,8 +29,7 @@ export default function TripForecastSection() {
         <section className='forecast__section' onClick={() => console.log(tripForecast)}>
             <span className='forecast__title'>Week</span>
             <div className='forecast__cards'>
-                {tripForecast && tripForecast.days.map(day => <TripForecastCard key={day.datetimeEpoch} info={day} />)}
-
+                {tripForecast && tripForecast.days.slice(0, 7).map(day => <TripForecastCard key={day.datetimeEpoch} info={day} />)}
             </div>
         </section>
     )

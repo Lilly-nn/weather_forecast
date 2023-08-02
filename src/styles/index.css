@@ -23,6 +23,7 @@ code {
   font-family: 'Roboto', sans-serif;
   display: flex;
   column-gap: 50px;
+  overflow: hidden;
 }
 
 .app__title {

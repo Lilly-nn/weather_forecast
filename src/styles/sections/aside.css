@@ -1,5 +1,52 @@
 .aside__section {
     width: 30%;
-    background: antiquewhite;
+    background: #eeece8;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* transform: translateX(100%);
+    transition: .3s linear; */
+}
+
+.aside__section.visible {
+    transform: translateX(0);
+}
+
+.aside__section .city-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+}
+
+.aside__section .city-info .day {
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.aside__section .city-info .icon {
+    width: 60px;
+}
+
+.aside__section .city-info .temp {
+    display: flex;
+    align-items: center;
+
+}
+
+.aside__section .city-info .degrees {
+    font-size: 56px;
+}
+
+.aside__section .city-info .celcius {
+    margin-bottom: 25%;
+    font-size: 25px;
+}
+
+.aside__section .city-info .city {
+    font-size: 20px;
 }
