@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useGlobalContext } from '../context/AppContext'
 import { getBackground, getDayOfWeek, getIcon } from '../utils/utils';
+import Countdown from './Countdown';
 
 export default function CityAsideForecast() {
     const { city } = useGlobalContext();
@@ -51,7 +52,7 @@ export default function CityAsideForecast() {
                     </div>
                     <span className='city'>{city}</span>
                 </div>
-                <div className='countdown'></div>
+                <Countdown/>
             </section>) 
     )
 }

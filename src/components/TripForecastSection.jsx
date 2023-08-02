@@ -5,7 +5,7 @@ import TripForecastCard from './TripForecastCard';
 export default function TripForecastSection() {
     const { city, tripStartDate, tripEndDate } = useGlobalContext();
     const [tripForecast, setTripForecast] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const notRenderCondition = !city || !tripStartDate || !tripEndDate;
 
@@ -17,8 +17,7 @@ export default function TripForecastSection() {
 
     useEffect(() => {
         if (notRenderCondition) return;
-        setLoading(true);
-        fetchTripWeather();
+        fetchTripWeather(); 
         setLoading(false);
     }, [city, tripEndDate, tripStartDate])
 
@@ -28,9 +27,9 @@ export default function TripForecastSection() {
     return (
         <section className='forecast__section' onClick={() => console.log(tripForecast)}>
             <span className='forecast__title'>Week</span>
-            <div className='forecast__cards'>
-                {tripForecast && tripForecast.days.slice(0, 7).map(day => <TripForecastCard key={day.datetimeEpoch} info={day} />)}
-            </div>
+                <div className='forecast__cards'>
+                    {tripForecast && tripForecast.days.slice(0, 7).map(day => <TripForecastCard key={day.datetimeEpoch} info={day} />)}
+                </div>
         </section>
     )
 }
