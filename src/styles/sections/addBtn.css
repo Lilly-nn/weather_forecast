@@ -1,0 +1,15 @@
+.button__container {
+    width: 20%;
+}
+
+.button__container .button {
+    background: #f5f4f8;
+    width: 192px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+

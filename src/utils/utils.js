@@ -5,6 +5,22 @@ export function formatDate(date) {
     return formatted;
 }
 
+export function formatDateToTemplate(date) {
+    //'yyyy-mm-dd'    
+    const mm = date.getMonth() + 1;
+    const dd = date.getDate();
+
+    return [date.getFullYear(),
+    (mm > 9 ? '' : '0') + mm,
+    (dd > 9 ? '' : '0') + dd
+    ].join('-');
+};
+
+export function addDays(date, days) {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+}
 
 const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 

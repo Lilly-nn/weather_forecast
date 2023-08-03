@@ -6,10 +6,10 @@ export default function SortIcon() {
   
     function sort() {
             if(filtered.length) {
-                sortByStartDate([...filtered]);
+                sortByStartDate(filtered);
             
             } else {
-                sortByStartDate([...citiesInfo])
+                sortByStartDate(citiesInfo)
             
             }
         }
