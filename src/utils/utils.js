@@ -22,6 +22,15 @@ export function addDays(date, days) {
     return result;
 }
 
+//set calendar initial data in modal
+export function getCalendarInitData() {
+    const today = new Date();
+    const startDate =  formatDateToTemplate(today);
+    const startEnd = formatDateToTemplate(addDays(today, 15));
+    return {startDate, startEnd}
+}
+
+
 const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 export function getDayOfWeek(date) {
@@ -69,6 +78,7 @@ export function getBackground(icon) {
         default: return cloudyBg;
     }
 }
+
 
 
 

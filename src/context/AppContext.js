@@ -22,13 +22,13 @@ export default function AppContext({ children }) {
             startDate: "13.08.2023",
             endDate: "21.08.2023",
         },
-        {
-            id: "_589038940389",
-            name: "Paris",
-            image: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/amsterdam_web-1cd4b2bf75.jpg",
-            startDate: "11.08.2023",
-            endDate: "28.08.2023",
-        },
+        // {
+        //     id: "_589038940389",
+        //     name: "Paris",
+        //     image: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/amsterdam_web-1cd4b2bf75.jpg",
+        //     startDate: "11.08.2023",
+        //     endDate: "28.08.2023",
+        // },
         // {
         //     id: "_589038940388",
         //     name: "Paris",

@@ -1,12 +1,16 @@
 .city-cards__container {
      margin-top: 60px;
      display: flex;
-     column-gap: 50px;
+     column-gap: 40px;
 }
 
 .city-cards__section {
     display: flex;
-    column-gap: 50px;
-    width: 80%;
-    /* background-color: aquamarine; */
+    column-gap: 35px;
+    max-width: 80%;
+    overflow: hidden;
+}
+
+.city-cards__section.full {
+    max-width: 100%;
 }

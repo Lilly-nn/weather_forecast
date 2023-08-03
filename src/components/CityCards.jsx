@@ -4,11 +4,15 @@ import AddTripBtn from './AddTripBtn';
 
 export default function CityCards({citiesInfo, filtered}) {
     const [active, setActive] = useState('');
-    const [cityCards, setCityCards] = useState(citiesInfo);
- 
+    const [cityCards, setCityCards] = useState([]);
+
+    useEffect(() => {
+        setCityCards(citiesInfo);
+    }, [citiesInfo])
+  
     return (
         <section className='city-cards__container'>
-            <div className='city-cards__section'>
+            <div className="city-cards__section">
             {filtered.length
                 ?
                 filtered.map(city => <CityCard key={city.id} city={city} active={active} setActive={setActive} />)

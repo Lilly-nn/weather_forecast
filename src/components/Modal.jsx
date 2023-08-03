@@ -1,38 +1,65 @@
 import { useGlobalContext } from '../context/AppContext';
 import {GrClose} from "react-icons/gr";
 import {LuAsterisk} from "react-icons/lu";
-import { addDays, formatDateToTemplate } from '../utils/utils';
+import { addDays, formatDateToTemplate, getCalendarInitData } from '../utils/utils';
 import { useEffect, useState } from 'react';
-import useFetchSelectOptions from '../hooks/useFetchSelectOptions';
-
+import { cities } from '../info/cities';
 
 export default function Modal() {
-    const {isModalOpen, setModalOpen} = useGlobalContext();
-    const options = useFetchSelectOptions(true);
-    const today = new Date();
-    const formattedToday = formatDateToTemplate(today);
-    const initialValue = {
-        startDate:  formatDateToTemplate(today),
-        startEnd: formatDateToTemplate(addDays(today, 15)),
-        endDate:  formatDateToTemplate(addDays(formattedToday, 30))
-    };
-    const [value, setValue] = useState("jkh");
-    const [tripDate, setTripDate] = useState({
-
+    const {isModalOpen, setModalOpen, citiesInfo, setCitiesInfo} = useGlobalContext();
+    const [options, setOptions] = useState([]);
+    const {startDate, startEnd} = getCalendarInitData();
+    const [endMax, setEndMax] = useState('');
+    const [data, setData] = useState({
+        city: "",
+        startDate: "",
+        endDate: ""
     })
 
-    
-   
-  
-    console.log(options)
+    useEffect(() => {;
+        setOptions(cities);
+    }, [cities])
 
-    function changeDate(e) {
-        // setStartDate(e.target.value)
-    }
+    useEffect(() => {
+        if(data.startDate) {
+            setEndMax(formatDateToTemplate(addDays(data.startDate, 15)))
+        }
+    }, [data.startDate])
+   
+    function changeData(e) {
+            setData((prev) => ({
+                ...prev,
+                [e.target.name]: e.target.value
+            }));
+       }
 
     function closeModal() {
-        setModalOpen(false)
+        setModalOpen(false);
+        setData({
+            city: "",
+            startDate: "",
+            endDate: ""
+        })
     }
+  
+   function addCityCard() {
+        if(!data.city || !data.startDate || !data.endDate) {
+            alert("Please, fill in all fields!");
+            return;
+        }
+        setCitiesInfo([
+            ...citiesInfo, 
+            {
+                id: `_${Math.random() * 1000}`,
+                name: data.city.split(",")[0],
+                image: data.city.split(",")[1],
+                startDate: data.startDate.split('-').reverse().join('.'),
+                endDate: data.endDate.split('-').reverse().join('.'),
+            }
+        ])
+       closeModal();
+   }
+  
 
     return (
         isModalOpen && (
@@ -48,25 +75,25 @@ export default function Modal() {
                         <form className='form'>
                             <div className='form__item'>
                               <label><LuAsterisk/>City</label>
-                              <select className='select'>
+                              <select required className='select' value={data.city} name="city" onChange={changeData}>
                                 <option value="" disabled selected hidden>Please select a city</option>
-                                {options.length > 0 && options.map(el => <option value="" key={el} >{el}</option>)}
+                                {options.length > 0 && options.map(el => <option value={[el.name, el.image]} key={el.image} >{el.name}</option>)}
                              </select>  
                             </div>
                             <div className='form__item'>
                               <label><LuAsterisk/>Start Date</label>
-                              <input className={`input ${value && "has-value"}`}  type='date'  placeholder="Select date" min={initialValue.startDate} max={initialValue.startEnd}/>  
+                              <input required className={`input ${data.startDate && "has-value"}`} type='date' placeholder="Select date" value={data.startDate} onInput={changeData} min={startDate} max={startEnd} name="startDate"/>  
                             </div>
                             <div className='form__item'>
                               <label><LuAsterisk/>End Date</label>
-                              <input className={`input ${value && "has-value"}`} type='date' value={initialValue.startEnd} placeholder="Select date"  max={initialValue.endDate} />  
+                              <input required disabled = {!data.startDate ? true : false} className={`input ${data.endDate && "has-value"}`} type='date' placeholder="Select date" value={data.endDate} onInput={changeData} min={data.startDate || startDate} max={endMax} name="endDate" />  
                             </div>
                         </form>
                     </div>
                     <div className='modal__footer'>
                         <div className='modal__footer-inner'>
                             <button onClick={closeModal}>Cancel</button>
-                            <button>Save</button>    
+                            <button onClick={addCityCard}>Save</button>    
                         </div>
                        
                     </div>

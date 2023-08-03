@@ -1,9 +1,9 @@
-import {GoSortAsc} from "react-icons/go"
-import { useGlobalContext } from "../context/AppContext"
+import { GoSortAsc } from "react-icons/go";
+import { useGlobalContext } from "../context/AppContext";
 
 export default function SortIcon() {
     const { citiesInfo, setFiltered, filtered } = useGlobalContext();
-  
+    
     function sort() {
             if(filtered.length) {
                 sortByStartDate(filtered);
@@ -12,7 +12,7 @@ export default function SortIcon() {
                 sortByStartDate(citiesInfo)
             
             }
-        }
+    }
 
 
     function sortByStartDate(arr) {
