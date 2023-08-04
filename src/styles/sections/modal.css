@@ -16,6 +16,8 @@
   height: 65%;
   display: flex;
   flex-direction: column;
+  border-radius: 5px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .modal__header {
@@ -104,8 +106,32 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    column-gap: 20px;
+    column-gap: 10px;
 }
+
+.modal__footer .cancel__btn {
+    border: 1px solid #c3c2c6;
+    transition: all ease-in-out .1s;
+    padding: 10px 20px;
+    border-radius: 2px;
+}
+.modal__footer .cancel__btn:hover {
+    background-color: #f5f4f8 ;
+}
+
+.modal__footer .save__btn {
+    color: white;
+    border-radius: 2px;
+    background-color: rgb(6 145 246);
+    padding: 10px 20px;
+    transition: all linear .2s;
+}
+
+.modal__footer .save__btn:hover {
+    background-color: rgb(19 127 206);
+}
+
+
 
 input[type="date"]:not(.has-value):before{
     color: lightgray;
@@ -114,5 +140,9 @@ input[type="date"]:not(.has-value):before{
     z-index: 2;
     background: white;
     width: 250px;
-    height: 20px;
+    height: 25px;
+  }
+
+  input[type="date"]:disabled:not(.has-value):before {
+    background: #fafafa;
   }

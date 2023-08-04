@@ -1,0 +1,35 @@
+.authorize__section {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 5;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.authorize__section--inner {
+    position: relative;
+}
+
+.authorize__section--inner:hover .popover {
+    display: block;
+}
+
+.authorize__section .icon {
+    color: #b1a7a7;
+}
+
+.popover {
+    font-size: 12px;
+    text-align: center;
+    position: absolute;
+    bottom: -50px;
+    left: 0px;
+    background-color: white;
+    color: gray;
+    border: 1px solid lightgray;
+    padding: 2px 5px;
+    display: none;
+}

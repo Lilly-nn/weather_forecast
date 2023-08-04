@@ -3,12 +3,14 @@ import { useGlobalContext } from '../context/AppContext'
 import CityCards from './CityCards'
 import SortSection from './SortSection'
 import TripForecastSection from './TripForecastSection'
+import AuthorizationIcon from './AuthorizationIcon'
 
 export default function WeatherForecast() {
     const { citiesInfo, filtered } = useGlobalContext();
 
     return (
         <section className='weather__section'>
+            <AuthorizationIcon/>
             <h1 className="app__title">Weather <span className="app__title--bold">Forecast</span></h1>
             <section>
                 <SortSection />

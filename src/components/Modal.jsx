@@ -92,8 +92,8 @@ export default function Modal() {
                     </div>
                     <div className='modal__footer'>
                         <div className='modal__footer-inner'>
-                            <button onClick={closeModal}>Cancel</button>
-                            <button onClick={addCityCard}>Save</button>    
+                            <button className='cancel__btn' onClick={closeModal}>Cancel</button>
+                            <button className='save__btn' onClick={addCityCard}>Save</button>    
                         </div>
                        
                     </div>

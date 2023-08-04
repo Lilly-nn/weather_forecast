@@ -13,3 +13,15 @@
     cursor: pointer;
 }
 
+.arrow__cont {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 50px;
+}
+
+.arrow__cont .icon {
+    color: lightgray
+}
+
