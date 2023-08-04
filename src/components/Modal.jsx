@@ -4,9 +4,10 @@ import {LuAsterisk} from "react-icons/lu";
 import { addDays, formatDateToTemplate, getCalendarInitData } from '../utils/utils';
 import { useEffect, useState } from 'react';
 import { cities } from '../info/cities';
+import { addToFirestore } from '../utils/firebase';
 
 export default function Modal() {
-    const {isModalOpen, setModalOpen, citiesInfo, setCitiesInfo} = useGlobalContext();
+    const {isModalOpen, setModalOpen, citiesInfo, setCitiesInfo, isAuthorized, userInfo} = useGlobalContext();
     const [options, setOptions] = useState([]);
     const {startDate, startEnd} = getCalendarInitData();
     const [endMax, setEndMax] = useState('');
@@ -41,21 +42,31 @@ export default function Modal() {
             endDate: ""
         })
     }
+
   
    function addCityCard() {
         if(!data.city || !data.startDate || !data.endDate) {
             alert("Please, fill in all fields!");
             return;
         }
+
+        const cityInfo =  {
+            id: `_${Math.random() * 1000}`,
+            name: data.city.split(",")[0],
+            image: data.city.split(",")[1],
+            startDate: data.startDate.split('-').reverse().join('.'),
+            endDate: data.endDate.split('-').reverse().join('.'),
+        }
+
+        const tripName = `${cityInfo.name}(${cityInfo.startDate}-${cityInfo.endDate})`;
+
+        if(isAuthorized) {
+            addToFirestore(tripName, cityInfo, userInfo.id);
+        }
+
         setCitiesInfo([
             ...citiesInfo, 
-            {
-                id: `_${Math.random() * 1000}`,
-                name: data.city.split(",")[0],
-                image: data.city.split(",")[1],
-                startDate: data.startDate.split('-').reverse().join('.'),
-                endDate: data.endDate.split('-').reverse().join('.'),
-            }
+            cityInfo
         ])
        closeModal();
    }
